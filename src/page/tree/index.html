@@ -1,0 +1,156 @@
+# remarkable
+
+[![Build Status](https://travis-ci.org/jonschlinkert/remarkable.svg?branch=master)](https://travis-ci.org/jonschlinkert/remarkable)
+[![NPM version](https://img.shields.io/npm/v/remarkable.svg)](https://www.npmjs.org/package/remarkable)
+[![Coverage Status](https://img.shields.io/coveralls/jonschlinkert/remarkable.svg)](https://coveralls.io/r/jonschlinkert/remarkable?branch=dev)
+
+> Markdown parser done right. Fast and easy to extend.
+
+__[Live demo](http://jonschlinkert.github.io/remarkable/demo/)__
+
+- Supports the [CommonMark](http://commonmark.org/) spec +
+  [syntax extensions](#syntax-extensions) + sugar (URL autolinking, typographer).
+- Configurable syntax! You can add new rules and even replace existing ones.
+- [High speed](#benchmark)!
+- [Community plugins](https://www.npmjs.org/browse/keyword/remarkable) on npm.
+
+
+## Install
+
+**node.js:**
+
+```bash
+npm install remarkable --save
+```
+
+**bower:**
+
+```bash
+bower install remarkable --save
+```
+
+**browser (CDN):**
+
+- [jsDeliver CDN](http://www.jsdelivr.com/#!remarkable "jsDelivr CDN")
+- [cdnjs](https://cdnjs.com/libraries/remarkable "cdnjs")
+
+
+## Usage
+
+```js
+var Remarkable = require('remarkable');
+var md = new Remarkable();
+
+console.log(md.render('# Remarkable rulezz!'));
+// => <h1>Remarkable rulezz!</h1>
+```
+
+If installed globally with `npm`:
+
+```sh
+cat myfile.md | remarkable
+remarkable --file myfile.md
+
+# get options
+remarkable -h
+```
+
+## Documentation
+
+See the [docs](docs/) directory for documentation on the following topics:
+
+- [parser](docs/parser.md)
+- [parsing_block](docs/parsing_block.md)
+- [parsing_core](docs/parsing_core.md)
+- [parsing_inline](docs/parsing_inline.md)
+- [plugins](docs/plugins.md)
+- [renderer](docs/renderer.md)
+
+### Options
+
+By default, remarkable is configured to be similar to GFM, but with HTML disabled.
+This is easy to change if you prefer different settings.
+
+There are two ways to define options.
+
+#### constructor
+
+Define options in the constructor:
+
+```js
+// Actual default values
+var md = new Remarkable({
+  html:         false,        // Enable HTML tags in source
+  xhtmlOut:     false,        // Use '/' to close single tags (<br />)
+  breaks:       false,        // Convert '\n' in paragraphs into <br>
+  langPrefix:   'language-',  // CSS language prefix for fenced blocks
+  linkify:      false,        // Autoconvert URL-like text to links
+
+  // Enable some language-neutral replacement + quotes beautification
+  typographer:  false,
+
+  // Double + single quotes replacement pairs, when typographer enabled,
+  // and smartquotes on. Set doubles to '«»' for Russian, '„“' for German.
+  quotes: '“”‘’',
+
+  // Highlighter function. Should return escaped HTML,
+  // or '' if the source string is not changed
+  highlight: function (/*str, lang*/) { return ''; }
+});
+
+console.log(md.render('# Remarkable rulezz!'));
+// => <h1>Remarkable rulezz!</h1>
+```
+
+#### .set
+
+Or define options via the `.set()` method:
+
+```js
+var Remarkable = require('remarkable');
+var md = new Remarkable();
+
+md.set({
+  html: true,
+  breaks: true
+});
+```
+
+**Note:** To achieve the best possible performance, don't modify a `Remarkable`
+instance on the fly. If you need multiple configurations, create
+multiple instances and initialize each with a configuration that is ideal for
+that instance.
+
+
+### Presets
+
+Remarkable offers some "presets" as a convenience to quickly enable/disable
+active syntax rules and options for common use cases.
+
+#### commonmark
+
+Enable strict [CommonMark](http://commonmark.org/) mode with the `commonmark` preset:
+
+```js
+var Remarkable = require('remarkable');
+var md = new Remarkable('commonmark');
+```
+
+#### full
+
+Enable all available rules (but still with default options, if not set):
+
+```js
+var Remarkable = require('remarkable');
+var md = new Remarkable('full');
+
+// Or with options:
+var md = new Remarkable('full', {
+  html: true,
+  linkify: true,
+  typographer: true
+});
+```
+
+
+### Syntax highlighting

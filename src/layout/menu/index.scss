@@ -1,0 +1,40 @@
+.g-menu {
+	width: 270px;
+	float: left;
+}
+.m-menu {
+
+	.m-menu-item {
+		
+		font-size: 14px;
+		height: 42px;
+		line-height: 42px;
+		.m-menu-item-link {
+			display: inline-block;
+			width: 100%;
+			padding: 0 16px 0 24px;
+			position: relative;
+			&:after {
+				content: "";
+				border-right: 3px solid #108ee9;
+				position: absolute;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				opacity: 0;
+			}
+		}
+		.m-menu-item-link-selected {
+			background: #ecf6fd;
+			color: #108ee9;
+			&:after {
+				opacity: 1;
+			}
+		}
+		&.m-menu-item-active {
+			color: #578ee9;
+			background: #ecf6fd;
+			border-right: 2px solid #108ee9;
+		}
+	}
+}
