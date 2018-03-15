@@ -4,7 +4,7 @@ import './index.scss'
 const Header = (props) => {
 	return (
 		<div className='g-header'>
-			Header
+			Regular-component
 		</div>
 		)
 }

@@ -6,6 +6,8 @@ import {Select} from 'regular-component';
 import Markdown from 'react-markdown';
 import template from './index.md'
 
+import code from './code.md';
+
 class SelectPage extends React.Component {
 	componentDidMount(){
 		let select = new Select({
@@ -43,7 +45,7 @@ class SelectPage extends React.Component {
 						<section className='code-box-meta'>
 							<pre>
 								<code>
-									
+									<Markdown source={code} />
 								</code>
 							</pre>
 						</section>

@@ -138,7 +138,11 @@ const config = {
       filename: 'vendor.bundle.js'//gave the chunk a different name
     }),
     
-
+    new webpack.DefinePlugin({
+		'process.env': {
+			'NODE_ENV': '"production"'
+		}
+	}),
 
     new HtmlWebpackPlugin({
       filename: 'index.html',

@@ -4,7 +4,11 @@ import Regular from 'regularjs';
 
 import {Checkbox} from 'regular-component';
 import Markdown from 'react-markdown';
-import template from './index.md'
+import template from './index.md';
+
+import code from './code.md';
+import code1 from './code1.md';
+
 
 class CheckboxPage extends React.Component {
 	componentDidMount(){
@@ -40,7 +44,7 @@ class CheckboxPage extends React.Component {
 						<section className='code-box-meta'>
 							<pre>
 								<code>
-									
+									<Markdown source={code} />
 								</code>
 							</pre>
 						</section>
@@ -51,7 +55,7 @@ class CheckboxPage extends React.Component {
 						<section className='code-box-meta'>
 							<pre>
 								<code>
-									
+									<Markdown source={code1} />
 								</code>
 							</pre>
 						</section>

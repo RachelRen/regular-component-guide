@@ -6,10 +6,11 @@ import {Message} from 'regular-component';
 import Markdown from 'react-markdown';
 import template from './index.md'
 
+
+import code1 from './code1.md';
+import code2 from './code2.md';
 class MessagePage extends React.Component {
 	componentDidMount(){
-		
-
 		
 	}
 	successMsg = () =>{
@@ -44,7 +45,8 @@ class MessagePage extends React.Component {
 						<section className='code-box-meta'>
 							<pre>
 								<code>
-									
+									<Markdown source={code1} />
+									<Markdown source={code2} />
 								</code>
 							</pre>
 						</section>

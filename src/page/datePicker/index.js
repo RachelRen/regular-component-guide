@@ -8,7 +8,10 @@ import Markdown from 'react-markdown';
 
 import template from './index.md'
 
-
+import code1 from './code1.md';
+import code2 from './code2.md';
+import code3 from './code3.md';
+import code4 from './code4.md';
 
 class DatePickerPage extends React.Component {
 	
@@ -75,7 +78,7 @@ class DatePickerPage extends React.Component {
 						<section className='code-box-meta'>
 							<pre>
 								<code>
-									
+									<Markdown source={code1} />
 								</code>
 							</pre>
 						</section>
@@ -86,7 +89,7 @@ class DatePickerPage extends React.Component {
 						<section className='code-box-meta'>
 							<pre>
 								<code>
-									
+									<Markdown source={code2} />
 								</code>
 							</pre>
 						</section>
@@ -97,7 +100,7 @@ class DatePickerPage extends React.Component {
 						<section className='code-box-meta'>
 							<pre>
 								<code>
-									
+									<Markdown source={code3} />
 								</code>
 							</pre>
 						</section>
@@ -108,7 +111,7 @@ class DatePickerPage extends React.Component {
 						<section className='code-box-meta'>
 							<pre>
 								<code>
-									
+									<Markdown source={code4} />
 								</code>
 							</pre>
 						</section>

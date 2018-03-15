@@ -6,6 +6,8 @@ import {Loading} from 'regular-component';
 import Markdown from 'react-markdown';
 import template from './index.md'
 
+import code from './code.md';
+
 class LoadingPage extends React.Component {
 	componentDidMount(){
 		const loading = new Loading({
@@ -33,7 +35,7 @@ class LoadingPage extends React.Component {
 						<section className='code-box-meta'>
 							<pre>
 								<code>
-									
+									<Markdown source={code} />
 								</code>
 							</pre>
 						</section>

@@ -4,7 +4,9 @@ import Regular from 'regularjs';
 
 import {ToolTip} from 'regular-component';
 import Markdown from 'react-markdown';
-import template from './index.md'
+import template from './index.md';
+
+import code from './code.md';
 
 class ToolTipPage extends React.Component {
 	componentDidMount(){
@@ -67,7 +69,7 @@ class ToolTipPage extends React.Component {
 						<section className='code-box-meta'>
 							<pre>
 								<code>
-									
+									<Markdown source={code} />
 								</code>
 							</pre>
 						</section>
